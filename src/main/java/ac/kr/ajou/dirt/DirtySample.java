@@ -46,6 +46,7 @@ class DirtySample {
         }
         item.sellIn -= 1;
         if(item.sellIn <= 0) item.quality = 0;
+        if(item.quality > 50) item.quality = 50;
     }
 
     private boolean isEqualsName(Item item, String s) {
