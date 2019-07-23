@@ -25,16 +25,16 @@ class DirtySample {
     }
 
     private void update_other_quality(Item item) {
-        if(item.quality < 50) item.quality += 1;
+        if(item.quality < 50) item.quality -= 1;
         item.sellIn -= 1;
-        if(item.sellIn < 0 && item.quality > 50) item.quality -= 1;
+        if(item.sellIn <= 0 && item.quality > 0) item.quality -= 1;
     }
 
     private void update_Aged_Quality(Item item) {
         item.sellIn -= 1;
         if(item.quality < 50){
-            if(item.sellIn >= 0) item.quality += 1;
-            else item.quality += 2;
+            if(item.sellIn <= 0) item.quality += 1;
+            item.quality += 1;
         }
     }
 
@@ -45,7 +45,7 @@ class DirtySample {
             else item.quality += 3;
         }
         item.sellIn -= 1;
-        if(item.sellIn < 0) item.quality = 0;
+        if(item.sellIn <= 0) item.quality = 0;
     }
 
     private boolean isEqualsName(Item item, String s) {
