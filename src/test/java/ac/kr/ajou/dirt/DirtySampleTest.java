@@ -142,7 +142,7 @@ public class DirtySampleTest {
 
 
     @Test
-    public void 그외_상품일때_sellIn이도_아닌경우에 () {
+    public void 그외_상품일때_sellIn이_0일이하면_퀄리티가_마이너스2이고_1일이상이면_퀄리티가_마이너스1 () {
         testList = new Item[4];
         Item item1 = new Item("hhh",12,60);
         Item item2 = new Item("hhh",9,11);
@@ -153,7 +153,6 @@ public class DirtySampleTest {
         System.out.println("업데이트 전 2 : " + item2.toString());
         System.out.println("업데이트 전 3 : " + item3.toString());
         System.out.println("업데이트 전 4 : " + item4.toString());
-        System.out.println("업데이트 전 5 : " + item4.toString());
 
         testList[0] = item1;
         testList[1] = item2;
@@ -202,17 +201,17 @@ public class DirtySampleTest {
 
 
     @Test
-    public void Backstage의_퀄리티는_50이_최대 () {
+    public void Backstage의_퀄리티는_나중에_무조건_0 () {
         testList = new Item[1];
         Item item1 = new Item("Backstage passes to a TAFKAL80ETC concert",30,15);
         System.out.println("업데이트 전 1 : " + item1.toString());
 
         testList[0] = item1;
-        int testQuality = 50;
+        int testQuality = 0;
 
         DirtySample dirtySample = new DirtySample(testList);
 
-        for(int i = 0 ; i < 30 ; i++){
+        for(int i = 0 ; i < 40 ; i++){
             dirtySample.updateQuality();
         }
         System.out.println();
