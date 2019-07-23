@@ -8,6 +8,17 @@ import static org.junit.Assert.assertThat;
 public class DirtySampleTest {
     Item[] testList = new Item[1];
 
+    //TODO : Test코드 역으로 재구성 필요
+    //ex. 값을 대입하면 어떤식으로 실행된다 식으로
+    /**
+     * 경우의 수를 따져보기
+     * name : AgedBrie, Backstage, Sulfras, 셋다아닐때
+     * sellIn :  0미만, 0이상6미만, 6이상11미만, 11이상
+     * quality : 0미만, 0이상50미만, 50이상
+     *
+     * 총 경우의 수 = 4 * 4 * 3 = 48개
+     * */
+
     @Test
     public void 아이템_이름이_AgedBrie가_아니고_Backstage도_아니고_퀄리티가_0초과에_이름이_Sulfuras도_아니면_퀄리티를_마이너스1 (){
         Item item1 = new Item("hh",0,3);
@@ -105,4 +116,7 @@ public class DirtySampleTest {
         System.out.println(dirtySample.items[0].quality);
         assertThat(dirtySample.items[0].quality, is(testQuality)); //두번쨰 루트에서 Aged Brie와 퀄리티 50미만을 만족하므로 퀄리티가 한번더 플러스됨
     }
+
+
+
 }
