@@ -30,7 +30,6 @@ public class DirtySampleTest {
      그 외(일반상품)
      →sellin이
      →sellin이 0 이하일 경우 quality는 2씩 감소 (quality 최소는 0)
-
      * */
 
     @Test
@@ -161,7 +160,10 @@ public class DirtySampleTest {
         testList[2] = item3;
         testList[3] = item4;
 
-//        int testQuality = item1.quality + 1;
+        int testQuality1 = item1.quality - 1;
+        int testQuality2 = item2.quality - 1;
+        int testQuality3 = item3.quality - 1;
+        int testQuality4 = item4.quality - 2;
 
         DirtySample dirtySample = new DirtySample(testList);
         dirtySample.updateQuality();
@@ -171,7 +173,11 @@ public class DirtySampleTest {
         System.out.println("업데이트 후 2 : " + item2.toString());
         System.out.println("업데이트 후 3 : " + item3.toString());
         System.out.println("업데이트 후 4 : " + item4.toString());
-//        assertThat(dirtySample.items[0].quality, is(testQuality));
+
+        assertThat(dirtySample.items[0].quality, is(testQuality1));
+        assertThat(dirtySample.items[1].quality, is(testQuality2));
+        assertThat(dirtySample.items[2].quality, is(testQuality3));
+        assertThat(dirtySample.items[3].quality, is(testQuality4));
     }
 
 
