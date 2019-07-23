@@ -8,7 +8,6 @@ import static org.junit.Assert.assertThat;
 public class DirtySampleTest {
     Item[] testList;
 
-    //TODO : Test코드 역으로 재구성 필요
     /**
      Dirty Code Refactoring
      Sulfuras를 제외한 모든 상품의 quality는 최대 50(최고가치)이다.
