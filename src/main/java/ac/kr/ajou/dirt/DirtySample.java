@@ -31,21 +31,24 @@ class DirtySample {
 
     private void update_Aged_Quality(Item item) {
         item.sellIn -= 1;
-        if(item.quality < 50){
-            if(item.sellIn <= 0) item.quality += 1;
+        if(isQualityLessthan50(item)){
             item.quality += 1;
+            if(item.sellIn <= 0 && isQualityLessthan50(item)) item.quality += 1;
         }
     }
 
+    private boolean isQualityLessthan50(Item item) {
+        return item.quality < 50;
+    }
+
     private void update_Back_Quality(Item item) {
-        if(item.quality < 50) {
-            if(item.sellIn >= 11) item.quality += 1;
-            else if(item.sellIn >= 6) item.quality += 2;
+        if(isQualityLessthan50(item)) {
+            if(item.sellIn >= 11 && isQualityLessthan50(item)) item.quality += 1;
+            else if(item.sellIn >= 6 && isQualityLessthan50(item)) item.quality += 2;
             else item.quality += 3;
         }
         item.sellIn -= 1;
         if(item.sellIn <= 0) item.quality = 0;
-        if(item.quality > 50) item.quality = 50;
     }
 
     private boolean isEqualsName(Item item, String s) {
