@@ -6,12 +6,12 @@ import lombok.AllArgsConstructor;
 public class Item {
 
     public String name;
-    public int sellIn;
+    public int expirePeriod;
     public int quality;
 
 
     @Override
     public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality;
+        return this.name + ", " + this.expirePeriod + ", " + this.quality;
     }
 }
