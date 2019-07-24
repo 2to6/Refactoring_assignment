@@ -136,8 +136,6 @@ public class DirtySampleTest {
     public void Aged_Brie의_퀄리티는_50이_최대 () {
         testList = new Item[1];
         Item item1 = new Item("Aged Brie",5,15);
-        System.out.println("업데이트 전 1 : " + item1.toString());
-
         testList[0] = item1;
         int testQuality = 50;
 
