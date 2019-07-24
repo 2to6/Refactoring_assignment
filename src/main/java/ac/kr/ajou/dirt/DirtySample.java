@@ -10,27 +10,27 @@ class DirtySample {
     public void updateQuality() {
         for (Item item : items) {
             if(isEqualsName(item, "Backstage passes to a TAFKAL80ETC concert")){
-                update_Back_Quality(item);
+                updateBackQuality(item);
             }
             else if(isEqualsName(item, "Aged Brie")){
-                update_Aged_Quality(item);
+                updateAgedQuality(item);
             }
             else if(isEqualsName(item, "Sulfuras, Hand of Ragnaros")){
                 continue;
             }
             else{
-                update_other_quality(item);
+                updateOtherQuality(item);
             }
         }
     }
 
-    private void update_other_quality(Item item) {
+    private void updateOtherQuality(Item item) {
         if(item.quality > 0) item.quality -= 1;
         item.sellIn -= 1;
         if(item.sellIn <= 0) item.quality -= 1;
     }
 
-    private void update_Aged_Quality(Item item) {
+    private void updateAgedQuality(Item item) {
         item.sellIn -= 1;
         if(isQualityLessthan50(item)){
             item.quality += 1;
@@ -42,7 +42,7 @@ class DirtySample {
         return item.quality < 50;
     }
 
-    private void update_Back_Quality(Item item) {
+    private void updateBackQuality(Item item) {
         if(isQualityLessthan50(item)) {
             if(item.sellIn >= 11 && isQualityLessthan50(item)) item.quality += 1;
             else if(item.sellIn >= 6 && isQualityLessthan50(item)) item.quality += 2;
