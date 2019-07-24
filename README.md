@@ -10,7 +10,7 @@
 ### 변수의 의미
 - name: 상품의 의미
 - quality: 상품의 가치
-- sellIn: 남은 판매 일수
+- sellIn: 남은 
 
 ### 아이템 분석
 - Sulfuras를 제외한 모든 상품의 quality의 최대는 50(최고가치)이다.
@@ -25,9 +25,9 @@ Aged Brie(치즈)
 Backstage passes to a TAFKAL80ETC(콘서트 티켓)
 - 공연이 가까워 질 수록 quality는 올라간다. 
 - sellIn이 0일이하이면 quality가 0이 된다
-- sellIn이 1일이상 6일미만ㅇ이면 quality가 3 증가한다.
+- sellIn이 1일이상 6일미만이면 quality가 3 증가한다.
 - sellIn이 6일이상 11일미만이면 quality가 2 증가한다.
--s ellIn이 11일이상이면 quality가 1 증가한다.
+- sellIn이 11일이상이면 quality가 1 증가한다.
 (quality 최대50, 최소0)
 
 Sulfuras, Hand of Ragnaros(게임 속 전설의 아이템)
@@ -36,7 +36,7 @@ Sulfuras, Hand of Ragnaros(게임 속 전설의 아이템)
 
 그 외(일반상품)
 - quality가 50보다 작으면 quality는 1씩 감소한다.
-- sellin이 0보다 같거나 작고, quality가 0보다 크면 quality는 1씩 감소한다.
+- sellIn이 0보다 같거나 작고, quality가 0보다 크면 quality는 1씩 감소한다.
 
 ## Test 코드 예시
 ```java
@@ -89,7 +89,7 @@ public class Item {
 
 ```java
 
-private void update_Aged_Quality(Item item) {
+private void updateAgedQuality(Item item) {
         item.sellIn -= 1;
         if(isQualityLessthan50(item)){
             item.quality += 1;
