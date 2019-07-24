@@ -68,6 +68,7 @@ Sulfuras, Hand of Ragnaros(게임 속 전설의 아이템)
 - 이름 검사하는 조건 함수로 만들기
 - 각 이름에 부합하는 경우(총 4가지)에 대한 실행조건 정리하고 코드 작성
 - item.quality < 50 함수로 만들기
+- sellIn 단어가 의미가 잘 와닿지 않아 expirePeriod로 수정
 - 피드백
 
 4. Test Code로 검증
@@ -101,10 +102,10 @@ public class Item {
 //DirtySample.java
 
 private void updateAgedQuality(Item item) {
-        item.sellIn -= 1;
+        item.expirePeriod -= 1;
         if(isQualityLessthan50(item)){
             item.quality += 1;
-            if(item.sellIn <= 0 && isQualityLessthan50(item)) item.quality += 1;
+            if(item.expirePeriod <= 0 && isQualityLessthan50(item)) item.quality += 1;
         }
     }
 
