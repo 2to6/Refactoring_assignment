@@ -8,9 +8,9 @@
 ## DirtySample 분석
 
 ### 변수의 의미
-- name: 상품의 의미
+- name: 상품의 이름
 - quality: 상품의 가치
-- sellIn: 남은 
+- sellIn: 남은 유통 기한
 
 ### 아이템 분석
 - Sulfuras를 제외한 모든 상품의 quality의 최대는 50(최고가치)이다.
@@ -45,19 +45,18 @@ Sulfuras, Hand of Ragnaros(게임 속 전설의 아이템)
     public void Aged_Brie의_SellIn이_0이상이면_퀄리티가_플러스1 () {
         testList = new Item[1];
         Item item1 = new Item("Aged Brie",2,49);
-        System.out.println("업데이트 전 : " + item1.toString());
         testList[0] = item1;
         int testQuality = item1.quality + 1;
 
         DirtySample dirtySample = new DirtySample(testList);
         dirtySample.updateQuality();
 
-        System.out.println("업데이트 후 : " + item1.toString());
         assertThat(dirtySample.items[0].quality, is(testQuality));
     }
-
 ```
+
 ## Refactoring 과정
+0. Dirty code의 동작 과정을 그림을 그려 파악
 1. Dirty code 분석을 통한 Test 함수 결정
 2. Test Code 작성 및 Test Case 생성
 3. Refactoring
@@ -71,23 +70,26 @@ Sulfuras, Hand of Ragnaros(게임 속 전설의 아이템)
 
 코드 예시
 ```java
+//Item.java
 
+@AllArgsConstructor
 public class Item {
 
     public String name;
-    public int sellIn;
+    public int expirePeriod;
     public int quality;
 
 
     @Override
     public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality;
+        return this.name + ", " + this.expirePeriod + ", " + this.quality;
     }
 }
 
 ```
 
 ```java
+//DirtySample.java
 
 private void updateAgedQuality(Item item) {
         item.sellIn -= 1;
