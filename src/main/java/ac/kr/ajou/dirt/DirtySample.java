@@ -3,38 +3,44 @@ package ac.kr.ajou.dirt;
 class DirtySample {
     Item[] items;
 
+    private final String concertTicket = "Backstage passes to a TAFKAL80ETC concert";
+    private final String cheese = "Aged Brie";
+    private final String gameItem = "Sulfuras, Hand of Ragnaros";
+
+
     public DirtySample(Item[] items) {
         this.items = items;
     }
-
+    
     public void updateQuality() {
         for (Item item : items) {
-            if(isEqualsName(item, "Backstage passes to a TAFKAL80ETC concert")){
-                updateBackQuality(item);
+            if(isEqualsName(item, concertTicket)){
+                updateTicketQuality(item);
+                return;
             }
-            else if(isEqualsName(item, "Aged Brie")){
-                updateAgedQuality(item);
+            if(isEqualsName(item, cheese)){
+                updateCheeseQuality(item);
+                return;
             }
-            else if(isEqualsName(item, "Sulfuras, Hand of Ragnaros")){
-                continue;
+            if(isEqualsName(item, gameItem)){
+                return;
             }
-            else{
-                updateOtherQuality(item);
-            }
+            updateOtherItemQuality(item);
         }
+        return;
     }
 
-    private void updateOtherQuality(Item item) {
+    private void updateOtherItemQuality(Item item) {
+        item.expirePeriod -= 1;
         if(item.quality > 0) item.quality -= 1;
-        item.sellIn -= 1;
-        if(item.sellIn <= 0) item.quality -= 1;
+        if(item.expirePeriod <= 0) item.quality -= 1;
     }
 
-    private void updateAgedQuality(Item item) {
-        item.sellIn -= 1;
+    private void updateCheeseQuality(Item item) {
+        item.expirePeriod -= 1;
         if(isQualityLessthan50(item)){
             item.quality += 1;
-            if(item.sellIn <= 0 && isQualityLessthan50(item)) item.quality += 1;
+            if(item.expirePeriod <= 0 && isQualityLessthan50(item)) item.quality += 1;
         }
     }
 
@@ -42,17 +48,17 @@ class DirtySample {
         return item.quality < 50;
     }
 
-    private void updateBackQuality(Item item) {
+    private void updateTicketQuality(Item item) {
         if(isQualityLessthan50(item)) {
-            if(item.sellIn >= 11 && isQualityLessthan50(item)) item.quality += 1;
-            else if(item.sellIn >= 6 && isQualityLessthan50(item)) item.quality += 2;
+            if(item.expirePeriod >= 11 && isQualityLessthan50(item)) item.quality += 1;
+            else if(item.expirePeriod >= 6 && isQualityLessthan50(item)) item.quality += 2;
             else item.quality += 3;
         }
-        item.sellIn -= 1;
-        if(item.sellIn <= 0) item.quality = 0;
+        item.expirePeriod -= 1;
+        if(item.expirePeriod <= 0) item.quality = 0;
     }
 
-    private boolean isEqualsName(Item item, String s) {
-        return item.name.equals(s);
+    private boolean isEqualsName(Item item, String itemName) {
+        return item.name.equals(itemName);
     }
 }
