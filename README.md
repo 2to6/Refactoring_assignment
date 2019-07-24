@@ -101,7 +101,7 @@ public class Item {
 ```java
 //DirtySample.java
 
-private void updateAgedQuality(Item item) {
+ private void updateCheeseQuality(Item item) {
         item.expirePeriod -= 1;
         if(isQualityLessthan50(item)){
             item.quality += 1;
