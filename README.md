@@ -77,7 +77,7 @@ Sulfuras, Hand of Ragnaros(게임 속 전설의 아이템)
 
 
 
-## 코드 예시
+## 실행 코드 예시
 ```java
 //Item.java
 
