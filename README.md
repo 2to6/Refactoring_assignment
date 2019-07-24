@@ -57,6 +57,9 @@ Sulfuras, Hand of Ragnaros(게임 속 전설의 아이템)
 
 ## Refactoring 과정
 0. Dirty code의 동작 과정을 그림을 그려 파악
+
+![dirtycodeGraph](./dirtycodeResizeGraph.jpg)
+
 1. Dirty code 분석을 통한 Test 함수 결정
 2. Test Code 작성 및 Test Case 생성
 3. Refactoring
@@ -66,9 +69,15 @@ Sulfuras, Hand of Ragnaros(게임 속 전설의 아이템)
 - 각 이름에 부합하는 경우(총 4가지)에 대한 실행조건 정리하고 코드 작성
 - item.quality < 50 함수로 만들기
 - 피드백
+
 4. Test Code로 검증
 
-코드 예시
+![resultTestDemo](./resultTestDemo.PNG)
+
+
+
+
+## 코드 예시
 ```java
 //Item.java
 
